@@ -10,8 +10,10 @@ using System.Threading.Tasks;
 
 namespace CalorieTracker
 {
+ 
     public class Program
     {
+      
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
@@ -24,4 +26,5 @@ namespace CalorieTracker
                     webBuilder.UseStartup<Startup>();
                 });
     }
+    
 }

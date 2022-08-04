@@ -11,8 +11,10 @@ namespace CalorieTracker.Controllers
     [Route("api/[controller]")]
     public class CalorieCalculator
     {
-        //Takes data to calculate Calorie Diary Intake
+
         [HttpGet]
+        //Takes data to calculate Calorie Diary Intake
+
         public double CalculateCalorieIntake([FromQuery] Double height, [FromQuery] Double actualWeight, [FromQuery] Double age)
         {
             return Class1.CalorieIntake(height, actualWeight, age);

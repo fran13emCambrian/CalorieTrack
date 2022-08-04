@@ -11,6 +11,12 @@ namespace CalculatorsLogic
         //Calculate Ideal Weight
         //Values Height = cm 
         //Weight kg
+
+       public static string Greeting(String greet= "Hello World!")
+        {
+            return greet; 
+        }
+        
         public static double IdealWeight(Double height)
         {
             return 0.75 * height - 62.5;
