@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CalculatorsLogic
 {
-    internal class Class1
+    public class Class1
     {
         //Calculate Ideal Weight
         //Values Height = cm 
