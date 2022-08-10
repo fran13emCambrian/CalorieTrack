@@ -33,6 +33,8 @@ namespace CalorieAppTracker.Areas.Identity.Pages.Account.Manage
 
         public class InputModel
         {
+            public string FirstName { get; set; }
+            public string LastName { get; set; }
             [Phone]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
@@ -47,6 +49,8 @@ namespace CalorieAppTracker.Areas.Identity.Pages.Account.Manage
 
             Input = new InputModel
             {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
                 PhoneNumber = phoneNumber
             };
         }
@@ -87,6 +91,8 @@ namespace CalorieAppTracker.Areas.Identity.Pages.Account.Manage
                     return RedirectToPage();
                 }
             }
+            user.FirstName = Input.FirstName;
+            user.LastName = Input.LastName;         
 
             await _signInManager.RefreshSignInAsync(user);
             StatusMessage = "Your profile has been updated";
