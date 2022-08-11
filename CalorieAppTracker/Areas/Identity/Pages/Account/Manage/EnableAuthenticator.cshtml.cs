@@ -11,6 +11,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using CalorieAppTracker.Services;
+using System.Globalization;
 
 namespace CalorieAppTracker.Areas.Identity.Pages.Account.Manage
 {
@@ -19,6 +21,8 @@ namespace CalorieAppTracker.Areas.Identity.Pages.Account.Manage
         private readonly UserManager<CustomIdentityUser> _userManager;
         private readonly ILogger<EnableAuthenticatorModel> _logger;
         private readonly UrlEncoder _urlEncoder;
+
+        public string QrCodeAsBase64 { get; set; }
 
         private const string AuthenticatorUriFormat = "otpauth://totp/{0}:{1}?secret={2}&issuer={0}&digits=6";
 
@@ -54,7 +58,7 @@ namespace CalorieAppTracker.Areas.Identity.Pages.Account.Manage
             public string Code { get; set; }
         }
 
-        public async Task<IActionResult> OnGetAsync()
+        public async Task<IActionResult> OnGetAsync([FromServices] QRService qrCodeService)
         {
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
@@ -63,7 +67,7 @@ namespace CalorieAppTracker.Areas.Identity.Pages.Account.Manage
             }
 
             await LoadSharedKeyAndQrCodeUriAsync(user);
-
+            QrCodeAsBase64 = qrCodeService.GetQRCodeAsBase64(AuthenticatorUri);
             return Page();
         }
 
@@ -148,6 +152,7 @@ namespace CalorieAppTracker.Areas.Identity.Pages.Account.Manage
         private string GenerateQrCodeUri(string email, string unformattedKey)
         {
             return string.Format(
+                CultureInfo.InvariantCulture,
                 AuthenticatorUriFormat,
                 _urlEncoder.Encode("CalorieAppTracker"),
                 _urlEncoder.Encode(email),

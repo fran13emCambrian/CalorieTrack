@@ -12,7 +12,9 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using QRCoder;
 using System.Threading.Tasks;
+using CalorieAppTracker.Services;
 
 namespace CalorieAppTracker
 {
@@ -33,6 +35,9 @@ namespace CalorieAppTracker
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
+            services.AddSingleton(new QRService(new QRCodeGenerator()));
+            
+            
             services.AddDefaultIdentity<CustomIdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
