@@ -8,4 +8,5 @@ namespace CalorieAppTracker.Models
 
         public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
     }
+
 }

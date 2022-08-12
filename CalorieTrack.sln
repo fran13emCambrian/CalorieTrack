@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalculatorsLogic", "Calcula
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestUnit", "TestUnit\TestUnit.csproj", "{D82F44CD-72E3-4ABF-A6A1-41A26B47C4EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalorieAppTracker", "CalorieAppTracker\CalorieAppTracker.csproj", "{F5652819-5093-4097-A0CD-224834C18142}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalorieAppTracker", "CalorieAppTracker\CalorieAppTracker.csproj", "{F5652819-5093-4097-A0CD-224834C18142}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

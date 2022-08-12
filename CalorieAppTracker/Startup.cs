@@ -41,6 +41,9 @@ namespace CalorieAppTracker
             services.AddDefaultIdentity<CustomIdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
+
+            services.AddDbContext<CalorieAppTrackerContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("CalorieAppTrackerContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -13,5 +13,6 @@ namespace CalorieAppTracker.Data
             : base(options)
         {
         }
+        public DbSet<CalorieAppTracker.Models.WeightCalculator> WeightCalculator { get; set; }
     }
 }
