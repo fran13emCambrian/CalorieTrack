@@ -10,22 +10,22 @@ using CalorieAppTrack.Models;
 
 namespace CalorieAppTrack.Controllers
 {
-    public class CalorieCalculatorModelsController : Controller
+    public class FoodEntryModelsController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public CalorieCalculatorModelsController(ApplicationDbContext context)
+        public FoodEntryModelsController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: CalorieCalculatorModels
+        // GET: FoodEntryModels
         public async Task<IActionResult> Index()
         {
-            return View(await _context.CalorieCalculatorModel.ToListAsync());
+            return View(await _context.FoodEntryModel.ToListAsync());
         }
 
-        // GET: CalorieCalculatorModels/Details/5
+        // GET: FoodEntryModels/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,41 +33,41 @@ namespace CalorieAppTrack.Controllers
                 return NotFound();
             }
 
-            var calorieCalculatorModel = await _context.CalorieCalculatorModel
+            var foodEntryModel = await _context.FoodEntryModel
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (calorieCalculatorModel == null)
+            if (foodEntryModel == null)
             {
                 return NotFound();
             }
 
-            return View(calorieCalculatorModel);
+            return View(foodEntryModel);
         }
 
-        // GET: CalorieCalculatorModels/Create
+        // GET: FoodEntryModels/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: CalorieCalculatorModels/Create
+        // POST: FoodEntryModels/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Height,Age,ActualWeight,CalorieIntake")] CalorieCalculatorModel calorieCalculatorModel)
+        public async Task<IActionResult> Create([Bind("Id,FoodName,Description,Calories,Servings,TotalCalories,TotalDayCalories")] FoodEntryModel foodEntryModel)
         {
-        calorieCalculatorModel.CalorieIntake = 66 + (13.7 * calorieCalculatorModel.ActualWeight) + (5 * calorieCalculatorModel.Height) - (6.75 * calorieCalculatorModel.Age);
-         if (ModelState.IsValid)
-         {
-          _context.Add(calorieCalculatorModel);
-          await _context.SaveChangesAsync();
-          return RedirectToAction(nameof(Index));
-          }
-            
-            return View(calorieCalculatorModel);
+            foodEntryModel.TotalCalories = foodEntryModel.Calories * foodEntryModel.Servings;
+            foodEntryModel.TotalDayCalories += foodEntryModel.TotalCalories;
+            if (ModelState.IsValid)
+            {
+                _context.Add(foodEntryModel);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(foodEntryModel);
         }
 
-        // GET: CalorieCalculatorModels/Edit/5
+        // GET: FoodEntryModels/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -75,22 +75,22 @@ namespace CalorieAppTrack.Controllers
                 return NotFound();
             }
 
-            var calorieCalculatorModel = await _context.CalorieCalculatorModel.FindAsync(id);
-            if (calorieCalculatorModel == null)
+            var foodEntryModel = await _context.FoodEntryModel.FindAsync(id);
+            if (foodEntryModel == null)
             {
                 return NotFound();
             }
-            return View(calorieCalculatorModel);
+            return View(foodEntryModel);
         }
 
-        // POST: CalorieCalculatorModels/Edit/5
+        // POST: FoodEntryModels/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Height,Age,ActualWeight,CalorieIntake")] CalorieCalculatorModel calorieCalculatorModel)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,FoodName,Description,Calories,Servings,TotalCalories,TotalDayCalories")] FoodEntryModel foodEntryModel)
         {
-            if (id != calorieCalculatorModel.Id)
+            if (id != foodEntryModel.Id)
             {
                 return NotFound();
             }
@@ -99,12 +99,12 @@ namespace CalorieAppTrack.Controllers
             {
                 try
                 {
-                    _context.Update(calorieCalculatorModel);
+                    _context.Update(foodEntryModel);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CalorieCalculatorModelExists(calorieCalculatorModel.Id))
+                    if (!FoodEntryModelExists(foodEntryModel.Id))
                     {
                         return NotFound();
                     }
@@ -115,10 +115,10 @@ namespace CalorieAppTrack.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(calorieCalculatorModel);
+            return View(foodEntryModel);
         }
 
-        // GET: CalorieCalculatorModels/Delete/5
+        // GET: FoodEntryModels/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -126,30 +126,30 @@ namespace CalorieAppTrack.Controllers
                 return NotFound();
             }
 
-            var calorieCalculatorModel = await _context.CalorieCalculatorModel
+            var foodEntryModel = await _context.FoodEntryModel
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (calorieCalculatorModel == null)
+            if (foodEntryModel == null)
             {
                 return NotFound();
             }
 
-            return View(calorieCalculatorModel);
+            return View(foodEntryModel);
         }
 
-        // POST: CalorieCalculatorModels/Delete/5
+        // POST: FoodEntryModels/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var calorieCalculatorModel = await _context.CalorieCalculatorModel.FindAsync(id);
-            _context.CalorieCalculatorModel.Remove(calorieCalculatorModel);
+            var foodEntryModel = await _context.FoodEntryModel.FindAsync(id);
+            _context.FoodEntryModel.Remove(foodEntryModel);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CalorieCalculatorModelExists(int id)
+        private bool FoodEntryModelExists(int id)
         {
-            return _context.CalorieCalculatorModel.Any(e => e.Id == id);
+            return _context.FoodEntryModel.Any(e => e.Id == id);
         }
     }
 }

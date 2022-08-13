@@ -16,6 +16,7 @@ namespace CalorieAppTrack.Data
         }
         
         public DbSet<CalorieCalculatorModel> CalorieCalculatorModel { get; set; }
+        public DbSet<FoodEntryModel> FoodEntryModel { get; set; }
 
     }
 }
