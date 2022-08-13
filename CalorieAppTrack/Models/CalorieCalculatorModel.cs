@@ -3,6 +3,7 @@
     public class CalorieCalculatorModel
     {
   
+        public int Id { get; set; }
         public double Height {get; set;}
 
         public double Age { get; set; }
