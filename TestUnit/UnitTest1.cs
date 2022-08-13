@@ -1,8 +1,7 @@
-using CalorieTracker;
 using CalculatorsLogic;
-using Microsoft.AspNetCore.Mvc.Testing;
+using CalorieAppTrack;
+using CalorieAppTrack.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Threading.Tasks;
 
 namespace TestUnit
 {
@@ -73,6 +72,70 @@ namespace TestUnit
             double desired = 2401.5;
 
             double actualResult = Class1.CalorieIntake(height, actualWeight, age);
+            Assert.AreEqual(desired, actualResult);
+        }
+
+        //FoodEntryMathTests
+        public void FoodEntryCalculationsUnitTest1()
+        {
+            double Calories = 200;
+            double Servings = 3;
+            double desired = 600;
+            
+            double actualResult = Calories * Servings;
+            Assert.AreEqual(desired, actualResult);
+        }
+
+        public void FoodEntryCalculationsUnitTest2()
+        {
+            double Calories = 200; 
+            double Servings = 3;
+            double TotalCalories = Calories * Servings;
+            double desired = 1200;
+            
+            double actualResult = TotalCalories += TotalCalories;
+            Assert.AreEqual(desired, actualResult);
+        }
+
+        public void FoodEntryCalculationsUnitTest3()
+        {
+            double Calories = 150;
+            double Servings = 3;
+            double desired = 450;
+
+            double actualResult = Calories * Servings;
+            Assert.AreEqual(desired, actualResult);
+        }
+
+        public void FoodEntryCalculationsUnitTest4()
+        {
+            double Calories = 200;
+            double Servings = 2;
+            double TotalCalories = Calories * Servings;
+            double desired = 800;
+
+            double actualResult = TotalCalories += TotalCalories;
+            Assert.AreEqual(desired, actualResult);
+        }
+
+        public void FoodEntryCalculationsUnitTest5()
+        {
+            double Calories = 300;
+            double Servings = 1;
+            double desired = 300;
+
+            double actualResult = Calories * Servings;
+            Assert.AreEqual(desired, actualResult);
+        }
+
+        public void FoodEntryCalculationsUnitTest6()
+        {
+            double Calories = 500;
+            double Servings = 1;
+            double TotalCalories = Calories * Servings;
+            double desired = 500;
+
+            double actualResult = TotalCalories += TotalCalories;
             Assert.AreEqual(desired, actualResult);
         }
     }

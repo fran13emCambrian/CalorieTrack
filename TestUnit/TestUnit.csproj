@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CalculatorsLogic\CalculatorsLogic.csproj" />
+    <ProjectReference Include="..\CalorieAppTrack\CalorieAppTrack.csproj" />
     <ProjectReference Include="..\CalorieTracker\CalorieTracker.csproj" />
   </ItemGroup>
 

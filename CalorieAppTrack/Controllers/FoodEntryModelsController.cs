@@ -57,7 +57,7 @@ namespace CalorieAppTrack.Controllers
         public async Task<IActionResult> Create([Bind("Id,FoodName,Description,Calories,Servings,TotalCalories,TotalDayCalories")] FoodEntryModel foodEntryModel)
         {
             foodEntryModel.TotalCalories = foodEntryModel.Calories * foodEntryModel.Servings;
-            foodEntryModel.TotalDayCalories += foodEntryModel.TotalCalories;
+            foodEntryModel.TotalDayCalories =  foodEntryModel.TotalCalories += foodEntryModel.TotalDayCalories;
             if (ModelState.IsValid)
             {
                 _context.Add(foodEntryModel);
