@@ -16,4 +16,8 @@
     <PackageReference Include="QRCoder" Version="1.4.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CalorieTracker\CalorieTracker.csproj" />
+  </ItemGroup>
+
 </Project>

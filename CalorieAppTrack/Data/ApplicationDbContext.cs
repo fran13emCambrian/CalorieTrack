@@ -1,6 +1,7 @@
 ﻿using CalorieAppTrack.Areas.Identity.Data;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using CalorieAppTrack.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,5 +14,8 @@ namespace CalorieAppTrack.Data
             : base(options)
         {
         }
+        
+        public DbSet<CalorieCalculatorModel> CalorieCalculatorModel { get; set; }
+
     }
 }

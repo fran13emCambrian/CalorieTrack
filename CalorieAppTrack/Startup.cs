@@ -33,6 +33,11 @@ namespace CalorieAppTrack
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+
+       //     services.AddDbContext<CalorieCalculatorContext>(options =>
+         //       options.UseSqlServer(
+           //         Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddSingleton(new QRService(new QRCodeGenerator()));
