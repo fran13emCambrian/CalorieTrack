@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalculatorsLogic", "Calcula
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestUnit", "TestUnit\TestUnit.csproj", "{D82F44CD-72E3-4ABF-A6A1-41A26B47C4EB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalorieAppTracker", "CalorieAppTracker\CalorieAppTracker.csproj", "{F5652819-5093-4097-A0CD-224834C18142}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalorieAppTrack", "CalorieAppTrack\CalorieAppTrack.csproj", "{58CD82EF-4598-48C9-91B7-EFA2AF1BAE59}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{D82F44CD-72E3-4ABF-A6A1-41A26B47C4EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D82F44CD-72E3-4ABF-A6A1-41A26B47C4EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D82F44CD-72E3-4ABF-A6A1-41A26B47C4EB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F5652819-5093-4097-A0CD-224834C18142}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F5652819-5093-4097-A0CD-224834C18142}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F5652819-5093-4097-A0CD-224834C18142}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F5652819-5093-4097-A0CD-224834C18142}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58CD82EF-4598-48C9-91B7-EFA2AF1BAE59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58CD82EF-4598-48C9-91B7-EFA2AF1BAE59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58CD82EF-4598-48C9-91B7-EFA2AF1BAE59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58CD82EF-4598-48C9-91B7-EFA2AF1BAE59}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

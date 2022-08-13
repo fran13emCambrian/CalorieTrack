@@ -1,0 +1,38 @@
+﻿@model CalorieAppTrack.Models.CalorieCalculatorModel
+@{
+}
+
+<html>
+    <head>
+        </head>
+        <body>
+            <h2>Calculate your Calorie Intake Here!</h2>
+           <div class="row">
+   
+                   <form action="CalcCal" method="post">
+                <div class="form-group">
+                <label for="Height">Enter Height In CM</label>
+                <input type="text" class="form-control" id="Height" name="Height" value="@Model.Height" />
+                </div>
+
+                <div class="form-group">
+                <label for="Age">Enter Age</label>
+                <input type="text" class="form-control" id="Age" name="Age" value="@Model.Age" />
+                </div>
+
+                <div class="form-group">
+                <label for="ActualWeight">Enter Actual Weight in KG</label>
+                <input type="text" class="form-control" id="ActualWeight" name="ActualWeight" value="@Model.ActualWeight" />
+                </div>
+
+                 <div class="form-group">
+                <label for="CalorieIntake">Your Daily Calorie Intake Should Be:</label>
+                <input type="text" class="form-control" id="CalorieIntake" name="CalorieIntake" value="@Model.CalorieIntake" />
+                </div>
+
+                <button type="submit" class="btn btn-info" id="Calculate" value="Calculate">Calculate</button>
+             </form>
+                
+            </div>
+        </body>
+</html>
