@@ -1,10 +1,15 @@
 ﻿using CalorieAppTrack;
 using Microsoft.AspNetCore.Mvc.Testing;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 using System.Threading.Tasks;
+using WebDriverManager;
+using WebDriverManager.DriverConfigs.Impl;
 using Xunit;
 
 namespace IntegrationTest
@@ -33,8 +38,10 @@ namespace IntegrationTest
 
             //Assert
             response.EnsureSuccessStatusCode();
-            Assert.Equal("text/html; charset=utf-8",
+            Xunit.Assert.Equal("text/html; charset=utf-8",
                 response.Content.Headers.ContentType.ToString());
         }
     }
+
+
 }
