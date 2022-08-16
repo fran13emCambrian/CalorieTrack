@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CalorieAppTrack.Data;
 using CalorieAppTrack.Models;
+using static CalorieAppTrack.Data.ApplicationDbContext;
 
 namespace CalorieAppTrack.Controllers
 {
@@ -20,6 +21,7 @@ namespace CalorieAppTrack.Controllers
         }
 
         // GET: CalorieCalculatorModels
+
         public async Task<IActionResult> Index()
         {
             return View(await _context.CalorieCalculatorModel.ToListAsync());

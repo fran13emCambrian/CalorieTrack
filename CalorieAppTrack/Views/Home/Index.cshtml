@@ -1,8 +1,34 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    string[] TableHeaders = new string[]
+    {
+    "User Id",
+    "User Name",
+    "Email",
+    "Phone Number",
+    "First Name",
+    "Last Name"
+    };
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<div class="table">
+    <table class="table table-bordered tabble-hover">
+        <thead>
+            <tr> 
+                @{
+                    foreach(var head in TableHeaders)
+                    {
+                        <th>
+                        @head
+                        </th>
+                    }
+                }
+                <th>
+
+                </th>
+            </tr>
+        </thead>
+       
+    </table>
+
+    </div>

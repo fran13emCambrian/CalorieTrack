@@ -10,13 +10,16 @@ namespace CalorieAppTrack.Data
 {
     public class ApplicationDbContext : IdentityDbContext<CustomIdentityUser>
     {
+
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
         }
-        
+
         public DbSet<CalorieCalculatorModel> CalorieCalculatorModel { get; set; }
         public DbSet<FoodEntryModel> FoodEntryModel { get; set; }
-
-    }
+        
+       public DbSet<UserInfoModel> UserInfoModel { get; set; }
+    }   
 }

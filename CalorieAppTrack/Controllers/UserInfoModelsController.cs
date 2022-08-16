@@ -1,94 +1,94 @@
-﻿using CalorieAppTrack.Data;
-using CalorieAppTrack.Models;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using CalorieAppTrack.Data;
+using CalorieAppTrack.Models;
 
 namespace CalorieAppTrack.Controllers
 {
-    public class FoodEntryModelsController : Controller
+    public class UserInfoModelsController : Controller
     {
         private readonly ApplicationDbContext _context;
-        public FoodEntryModelsController(ApplicationDbContext context)
-        {
 
+        public UserInfoModelsController(ApplicationDbContext context)
+        {
             _context = context;
         }
 
-        // GET: FoodEntryModels
+        // GET: UserInfoModels
         public async Task<IActionResult> Index()
         {
-            var foods = _context.FoodEntryModel.ToList();
-            return View(await _context.FoodEntryModel.ToListAsync());
+            return View(await _context.UserInfoModel.ToListAsync());
         }
 
-        // GET: FoodEntryModels/Details/5
-        public async Task<IActionResult> Details(int? id)
+        // GET: UserInfoModels/Details/5
+        public async Task<IActionResult> Details(string id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var foodEntryModel = await _context.FoodEntryModel
+            var userInfoModel = await _context.UserInfoModel
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (foodEntryModel == null)
+            if (userInfoModel == null)
             {
                 return NotFound();
             }
 
-            return View(foodEntryModel);
+            return View(userInfoModel);
         }
 
-        // GET: FoodEntryModels/Create
+        // GET: UserInfoModels/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: FoodEntryModels/Create
+        // POST: UserInfoModels/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FoodName,Description,Calories,Servings,TotalCalories,TotalDayCalories")] FoodEntryModel foodEntryModel)
+        public async Task<IActionResult> Create([Bind("Id,FirstName,LastName")] UserInfoModel userInfoModel)
         {
-            foodEntryModel.TotalCalories = foodEntryModel.Calories * foodEntryModel.Servings;
-            foodEntryModel.TotalDayCalories = foodEntryModel.TotalCalories += foodEntryModel.TotalDayCalories;
             if (ModelState.IsValid)
             {
-                _context.Add(foodEntryModel);
+                _context.Add(userInfoModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(foodEntryModel);
+            return View(userInfoModel);
         }
 
-        // GET: FoodEntryModels/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        // GET: UserInfoModels/Edit/5
+        public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var foodEntryModel = await _context.FoodEntryModel.FindAsync(id);
-            if (foodEntryModel == null)
+            var userInfoModel = await _context.UserInfoModel.FindAsync(id);
+            if (userInfoModel == null)
             {
                 return NotFound();
             }
-            return View(foodEntryModel);
+            return View(userInfoModel);
         }
 
-        // POST: FoodEntryModels/Edit/5
+        // POST: UserInfoModels/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FoodName,Description,Calories,Servings,TotalCalories,TotalDayCalories")] FoodEntryModel foodEntryModel)
+        public async Task<IActionResult> Edit(string id, [Bind("Id,FirstName,LastName")] UserInfoModel userInfoModel)
         {
-            if (id != foodEntryModel.Id)
+            if (id != userInfoModel.Id)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace CalorieAppTrack.Controllers
             {
                 try
                 {
-                    _context.Update(foodEntryModel);
+                    _context.Update(userInfoModel);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!FoodEntryModelExists(foodEntryModel.Id))
+                    if (!UserInfoModelExists(userInfoModel.Id))
                     {
                         return NotFound();
                     }
@@ -113,41 +113,41 @@ namespace CalorieAppTrack.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(foodEntryModel);
+            return View(userInfoModel);
         }
 
-        // GET: FoodEntryModels/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        // GET: UserInfoModels/Delete/5
+        public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var foodEntryModel = await _context.FoodEntryModel
+            var userInfoModel = await _context.UserInfoModel
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (foodEntryModel == null)
+            if (userInfoModel == null)
             {
                 return NotFound();
             }
 
-            return View(foodEntryModel);
+            return View(userInfoModel);
         }
 
-        // POST: FoodEntryModels/Delete/5
+        // POST: UserInfoModels/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            var foodEntryModel = await _context.FoodEntryModel.FindAsync(id);
-            _context.FoodEntryModel.Remove(foodEntryModel);
+            var userInfoModel = await _context.UserInfoModel.FindAsync(id);
+            _context.UserInfoModel.Remove(userInfoModel);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool FoodEntryModelExists(int id)
+        private bool UserInfoModelExists(string id)
         {
-            return _context.FoodEntryModel.Any(e => e.Id == id);
+            return _context.UserInfoModel.Any(e => e.Id == id);
         }
     }
 }
