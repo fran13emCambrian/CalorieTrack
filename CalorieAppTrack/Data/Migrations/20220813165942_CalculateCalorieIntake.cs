@@ -10,7 +10,7 @@ namespace CalorieAppTrack.Data.Migrations
                 name: "CalorieCalculatorModel",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    IdCalorie = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Height = table.Column<double>(type: "float", nullable: false),
                     Age = table.Column<double>(type: "float", nullable: false),
@@ -19,7 +19,7 @@ namespace CalorieAppTrack.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CalorieCalculatorModel", x => x.Id);
+                    table.PrimaryKey("PK_CalorieCalculatorModel", x => x.IdCalorie);
                 });
         }
 

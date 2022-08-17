@@ -1,4 +1,7 @@
-﻿namespace CalorieAppTrack.Models
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace CalorieAppTrack.Models
 {
     public class FoodEntryModel
     {
@@ -12,5 +15,8 @@
         public double TotalCalories { get; set; }
 
         public double TotalDayCalories { get; set; }
+
+        //Relationships
+        public UserModel User { get; set; }
     }
 }

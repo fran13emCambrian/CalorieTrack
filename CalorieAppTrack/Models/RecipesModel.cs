@@ -1,4 +1,7 @@
-﻿namespace CalorieAppTrack.Models
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace CalorieAppTrack.Models
 {
     public class RecipesModel
     {
@@ -11,5 +14,7 @@
 
         public string PreparationTime { get; set; }
 
+        //Relationship 
+        public UserModel User { get; set; }
     }
 }

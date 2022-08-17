@@ -4,14 +4,16 @@ using CalorieAppTrack.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CalorieAppTrack.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220817010917_Update pk calorie calc")]
+    partial class Updatepkcaloriecalc
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -201,12 +203,7 @@ namespace CalorieAppTrack.Data.Migrations
                     b.Property<string>("RecipeName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("UserId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("RecipesModel");
                 });
@@ -395,15 +392,6 @@ namespace CalorieAppTrack.Data.Migrations
                     b.Navigation("UserModel");
                 });
 
-            modelBuilder.Entity("CalorieAppTrack.Models.RecipesModel", b =>
-                {
-                    b.HasOne("CalorieAppTrack.Models.UserModel", "User")
-                        .WithMany("RecipesModels")
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -462,8 +450,6 @@ namespace CalorieAppTrack.Data.Migrations
                     b.Navigation("FoodEntries");
 
                     b.Navigation("IdealWeightCalculatorModel");
-
-                    b.Navigation("RecipesModels");
                 });
 #pragma warning restore 612, 618
         }

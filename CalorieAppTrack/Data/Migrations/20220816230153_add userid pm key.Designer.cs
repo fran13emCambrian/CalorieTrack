@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CalorieAppTrack.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220816020211_UserInfo")]
-    partial class UserInfo
+    [Migration("20220816230153_add userid pm key")]
+    partial class adduseridpmkey
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -146,20 +146,75 @@ namespace CalorieAppTrack.Data.Migrations
                     b.ToTable("FoodEntryModel");
                 });
 
-            modelBuilder.Entity("CalorieAppTrack.Models.UserInfoModel", b =>
+            modelBuilder.Entity("CalorieAppTrack.Models.IdealWeightCalculatorModel", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("WeightId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("FirstName")
+                    b.Property<int>("ActualWeight")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Height")
+                        .HasColumnType("int");
+
+                    b.Property<double>("IdealWeight")
+                        .HasColumnType("float");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("WeightId");
+
+                    b.ToTable("IdealWeightCalculatorModel");
+                });
+
+            modelBuilder.Entity("CalorieAppTrack.Models.RecipesModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Ingredients")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("LastName")
+                    b.Property<string>("PreparationTime")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RecipeDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RecipeName")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("UserInfoModel");
+                    b.ToTable("RecipesModel");
+                });
+
+            modelBuilder.Entity("CalorieAppTrack.Models.UserModel", b =>
+                {
+                    b.Property<int>("UserId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("FoodEntryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId");
+
+                    b.HasIndex("FoodEntryId");
+
+                    b.ToTable("UserModel");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -297,6 +352,15 @@ namespace CalorieAppTrack.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("CalorieAppTrack.Models.UserModel", b =>
+                {
+                    b.HasOne("CalorieAppTrack.Models.FoodEntryModel", "FoodEntry")
+                        .WithMany("Users")
+                        .HasForeignKey("FoodEntryId");
+
+                    b.Navigation("FoodEntry");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -346,6 +410,11 @@ namespace CalorieAppTrack.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("CalorieAppTrack.Models.FoodEntryModel", b =>
+                {
+                    b.Navigation("Users");
                 });
 #pragma warning restore 612, 618
         }
