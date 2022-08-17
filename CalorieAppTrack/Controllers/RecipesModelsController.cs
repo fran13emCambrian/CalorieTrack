@@ -10,22 +10,22 @@ using CalorieAppTrack.Models;
 
 namespace CalorieAppTrack.Controllers
 {
-    public class FoodEntryModelsController : Controller
+    public class RecipesModelsController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public FoodEntryModelsController(ApplicationDbContext context)
+        public RecipesModelsController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: FoodEntryModels
+        // GET: RecipesModels
         public async Task<IActionResult> Index()
         {
-            return View(await _context.FoodEntryModel.ToListAsync());
+            return View(await _context.RecipesModel.ToListAsync());
         }
 
-        // GET: FoodEntryModels/Details/5
+        // GET: RecipesModels/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,39 +33,39 @@ namespace CalorieAppTrack.Controllers
                 return NotFound();
             }
 
-            var foodEntryModel = await _context.FoodEntryModel
+            var recipesModel = await _context.RecipesModel
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (foodEntryModel == null)
+            if (recipesModel == null)
             {
                 return NotFound();
             }
 
-            return View(foodEntryModel);
+            return View(recipesModel);
         }
 
-        // GET: FoodEntryModels/Create
+        // GET: RecipesModels/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: FoodEntryModels/Create
+        // POST: RecipesModels/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FoodName,Description,Calories,Servings,TotalCalories,TotalDayCalories")] FoodEntryModel foodEntryModel)
+        public async Task<IActionResult> Create([Bind("Id,RecipeName,RecipeDescription,Ingredients,PreparationTime")] RecipesModel recipesModel)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(foodEntryModel);
+                _context.Add(recipesModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(foodEntryModel);
+            return View(recipesModel);
         }
 
-        // GET: FoodEntryModels/Edit/5
+        // GET: RecipesModels/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,22 +73,22 @@ namespace CalorieAppTrack.Controllers
                 return NotFound();
             }
 
-            var foodEntryModel = await _context.FoodEntryModel.FindAsync(id);
-            if (foodEntryModel == null)
+            var recipesModel = await _context.RecipesModel.FindAsync(id);
+            if (recipesModel == null)
             {
                 return NotFound();
             }
-            return View(foodEntryModel);
+            return View(recipesModel);
         }
 
-        // POST: FoodEntryModels/Edit/5
+        // POST: RecipesModels/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FoodName,Description,Calories,Servings,TotalCalories,TotalDayCalories")] FoodEntryModel foodEntryModel)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,RecipeName,RecipeDescription,Ingredients,PreparationTime")] RecipesModel recipesModel)
         {
-            if (id != foodEntryModel.Id)
+            if (id != recipesModel.Id)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace CalorieAppTrack.Controllers
             {
                 try
                 {
-                    _context.Update(foodEntryModel);
+                    _context.Update(recipesModel);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!FoodEntryModelExists(foodEntryModel.Id))
+                    if (!RecipesModelExists(recipesModel.Id))
                     {
                         return NotFound();
                     }
@@ -113,10 +113,10 @@ namespace CalorieAppTrack.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(foodEntryModel);
+            return View(recipesModel);
         }
 
-        // GET: FoodEntryModels/Delete/5
+        // GET: RecipesModels/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,30 +124,30 @@ namespace CalorieAppTrack.Controllers
                 return NotFound();
             }
 
-            var foodEntryModel = await _context.FoodEntryModel
+            var recipesModel = await _context.RecipesModel
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (foodEntryModel == null)
+            if (recipesModel == null)
             {
                 return NotFound();
             }
 
-            return View(foodEntryModel);
+            return View(recipesModel);
         }
 
-        // POST: FoodEntryModels/Delete/5
+        // POST: RecipesModels/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var foodEntryModel = await _context.FoodEntryModel.FindAsync(id);
-            _context.FoodEntryModel.Remove(foodEntryModel);
+            var recipesModel = await _context.RecipesModel.FindAsync(id);
+            _context.RecipesModel.Remove(recipesModel);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool FoodEntryModelExists(int id)
+        private bool RecipesModelExists(int id)
         {
-            return _context.FoodEntryModel.Any(e => e.Id == id);
+            return _context.RecipesModel.Any(e => e.Id == id);
         }
     }
 }
