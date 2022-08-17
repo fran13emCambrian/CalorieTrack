@@ -1,0 +1,53 @@
+﻿@model IEnumerable<CalorieAppTrack.Models.IdealWeightCalculatorModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ActualWeight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Height)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdealWeight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserModel)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActualWeight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Height)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdealWeight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserModel.UserId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.WeightId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.WeightId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.WeightId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
