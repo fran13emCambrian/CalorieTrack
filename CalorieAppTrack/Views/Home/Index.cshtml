@@ -1,9 +1,91 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@{
+    Layout = "_Layout";
+}
 
-<h2>Check your Ideal Weight</h2>
-<tr>
-    <td><a href="/IdealWeightCalculatorModels/Index"> Link to Calculate Ideal Weight </a></td>
-</tr>
 
+
+<div class="container" style="width: 100%; height:fit-content; text-align: center; padding: 35px; border: 2px solid black; background: cyan;">
+
+    <h1>Welcome to Weight Tracking App</h1>
+
+</div>
+
+
+@section Section1
+{
+
+    <div class="container" style="display: flex; height: fit-content;">
+
+        <div style="width: 100%; height:fit-content; text-align: center; padding: 35px; border: 2px solid black; background: cyan;">
+         <h4>Register New User</h4>
+         <a href="/UserModels/Create">
+         <img alt="Weight" style="border-radius: 100%" src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png"
+         width="150" height="100"></a>
+         <p class="mb-md-4" style="margin-top: 4px">
+          Click the picture to register as new user</p>   
+        </div>
+
+        <div style="width: 100%; height:fit-content; text-align: center; padding: 35px; border: 2px solid black; background: cyan;">
+         <h4>Ideal Weight Calculator</h4>
+         <a href="/IdealWeightCalculatorModels/Index">
+         <img alt="Weight" style="border-radius: 100%" src="https://thumbs.dreamstime.com/z/weighing-yourself-icon-long-shadow-digital-digit-apparatus-52448741.jpg"
+         width="150" height="100"></a>
+         <p class="mb-md-4" style="margin-top: 4px">
+          Click the picture to track users ideal weight</p>   
+        </div>
+    </div>
+
+}
+
+
+@section Section2
+{
+        
+     <div class="container" style="display: flex; height: fit-content;">
+
+        <div style="width: 100%; height:fit-content; text-align: center; padding: 35px; border: 2px solid black; background: cyan;">
+         <h4>Manage Your Recipes</h4>
+         <a href="/RecipesModels/Create">
+         <img alt="Weight" style="border-radius: 100%" src="https://img.freepik.com/premium-vector/woman-kitchen-cooking-person-cooking-healthy-food-stock-vector-cartoon-illustration_502320-737.jpg?w=1060"
+         width="150" height="100"></a>
+         <p class="mb-md-4" style="margin-top: 4px">
+          Click the picture to manage the recipes</p>   
+        </div>
+
+        <div style="width: 100%; height:fit-content; text-align: center; padding: 35px; border: 2px solid black; background: cyan;">
+         <h4>Calorie Diary</h4>
+         <a href="/FoodEntryModels">
+         <img alt="Weight" style="border-radius: 100%" src="https://img.freepik.com/premium-vector/full-basket-with-different-healthy-food_165488-148.jpg?w=1060"
+         width="150" height="100"></a>
+         <p class="mb-md-4" style="margin-top: 4px">
+          Click the picture to track and manage your calorie diary</p>     
+        </div>
+    </div>
+        
+}
+ 
+
+@section Section3
+{
+        
+     <div class="container" style="display: flex; height: fit-content;">
+
+        <div style="width: 100%; height:fit-content; text-align: center; padding: 35px; border: 2px solid black; background: cyan;">
+         <h4>Calorie Intake Calculator</h4>
+         <a href="/CalorieCalculatorModels/Create">
+         <img alt="Weight" style="border-radius: 100%" src="https://i.pinimg.com/736x/c8/2e/05/c82e0572ee6712afa7fc357414161137.jpg"
+         width="150" height="100"></a>
+         <p class="mb-md-4" style="margin-top: 4px">
+          Click the picture to calculate your calorie intake</p>   
+        </div>
+
+        <div style="width: 100%; height:fit-content; text-align: center; padding: 35px; border: 2px solid black; background: white;">
+         <img alt="Weight" style="border-radius: 100%" src="https://mpng.subpng.com/20190517/vpb/kisspng-healthy-diet-nutrition-food-clip-art-the-good-food-box-good-food-box-thunder-bay-5cdf775511b008.1297726915581489490725.jpg"
+         width="300" height="190">    
+        </div>
+    </div>
+        
+}

@@ -59,6 +59,7 @@ namespace CalorieAppTrack.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("WeightId,ActualWeight,Height,IdealWeight,UserId")] IdealWeightCalculatorModel idealWeightCalculatorModel)
         {
+            idealWeightCalculatorModel.IdealWeight = 0.75 * idealWeightCalculatorModel.Height - 62.5;
             if (ModelState.IsValid)
             {
                 _context.Add(idealWeightCalculatorModel);
