@@ -46,6 +46,13 @@ namespace CalorieAppTrack.Controllers
         // GET: RecipesModels/Create
         public IActionResult Create()
         {
+            List<SelectListItem> users = new()
+            {
+                new SelectListItem {Value = "1", Text = "Francisco"},
+                new SelectListItem {Value = "2", Text = "John"},
+                new SelectListItem {Value = "3", Text = "Louis"}
+            };
+            ViewBag.users = users;
             return View();
         }
 
@@ -54,7 +61,7 @@ namespace CalorieAppTrack.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,RecipeName,RecipeDescription,Ingredients,PreparationTime")] RecipesModel recipesModel)
+        public async Task<IActionResult> Create([Bind("Id,RecipeName,RecipeDescription,Ingredients,PreparationTime,User")] RecipesModel recipesModel)
         {
             if (ModelState.IsValid)
             {

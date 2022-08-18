@@ -17,6 +17,7 @@ namespace CalorieAppTrack.Models
         public double TotalDayCalories { get; set; }
 
         //Relationships
-        public UserModel User { get; set; }
+      public UserModel User { get; set; }
+     
     }
 }

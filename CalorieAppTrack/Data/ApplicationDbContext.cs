@@ -30,6 +30,7 @@ namespace CalorieAppTrack.Data
             .HasForeignKey<CalorieCalculatorModel>(ccm => ccm.UserId);
 
             base.OnModelCreating(modelBuilder);
+
         }
 
         public DbSet<CalorieCalculatorModel> CalorieCalculatorModel { get; set; }

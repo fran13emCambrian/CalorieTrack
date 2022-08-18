@@ -44,8 +44,15 @@ namespace CalorieAppTrack.Controllers
         }
 
         // GET: FoodEntryModels/Create
-        public IActionResult Create()
+        public IActionResult Create(int UserId)
         {
+           List<SelectListItem> users = new()
+            {
+                new SelectListItem {Value = "1", Text = "Francisco"},
+                new SelectListItem {Value = "2", Text = "John"},
+                new SelectListItem {Value = "3", Text = "Louis"}
+            };
+            ViewBag.users = users; 
             return View();
         }
 
@@ -54,16 +61,22 @@ namespace CalorieAppTrack.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FoodName,Description,Calories,Servings,TotalCalories,TotalDayCalories")] FoodEntryModel foodEntryModel)
+        public async Task<IActionResult> Create([Bind("Id,FoodName,Description,Calories,Servings,TotalCalories,TotalDayCalories,UserId")] FoodEntryModel foodEntryModel)
         {
+           
+            foodEntryModel.TotalCalories = foodEntryModel.Calories * foodEntryModel.Servings;
+            foodEntryModel.TotalDayCalories = foodEntryModel.TotalCalories += foodEntryModel.TotalCalories;
             if (ModelState.IsValid)
             {
                 _context.Add(foodEntryModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            
             return View(foodEntryModel);
         }
+       
+
 
         // GET: FoodEntryModels/Edit/5
         public async Task<IActionResult> Edit(int? id)

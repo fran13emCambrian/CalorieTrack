@@ -4,14 +4,16 @@ using CalorieAppTrack.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CalorieAppTrack.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220817223840_add drop down to food entry")]
+    partial class adddropdowntofoodentry
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -145,12 +147,12 @@ namespace CalorieAppTrack.Data.Migrations
                     b.Property<double>("TotalDayCalories")
                         .HasColumnType("float");
 
-                    b.Property<int?>("UserId1")
+                    b.Property<int?>("UserModelUserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId1");
+                    b.HasIndex("UserModelUserId");
 
                     b.ToTable("FoodEntryModel");
                 });
@@ -377,11 +379,9 @@ namespace CalorieAppTrack.Data.Migrations
 
             modelBuilder.Entity("CalorieAppTrack.Models.FoodEntryModel", b =>
                 {
-                    b.HasOne("CalorieAppTrack.Models.UserModel", "UserId")
+                    b.HasOne("CalorieAppTrack.Models.UserModel", null)
                         .WithMany("FoodEntries")
-                        .HasForeignKey("UserId1");
-
-                    b.Navigation("UserId");
+                        .HasForeignKey("UserModelUserId");
                 });
 
             modelBuilder.Entity("CalorieAppTrack.Models.IdealWeightCalculatorModel", b =>

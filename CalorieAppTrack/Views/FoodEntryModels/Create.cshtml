@@ -12,7 +12,7 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
+         <div class="form-group">
                 <label asp-for="FoodName" class="control-label"></label>
                 <input asp-for="FoodName" class="form-control" />
                 <span asp-validation-for="FoodName" class="text-danger"></span>
@@ -32,17 +32,12 @@
                 <input asp-for="Servings" class="form-control" />
                 <span asp-validation-for="Servings" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="TotalCalories" class="control-label"></label>
-                <input asp-for="TotalCalories" class="form-control" />
-                <span asp-validation-for="TotalCalories" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TotalDayCalories" class="control-label"></label>
-                <input asp-for="TotalDayCalories" class="form-control" />
-                <span asp-validation-for="TotalDayCalories" class="text-danger"></span>
-            </div>
-            <div class="form-group">
+          <div class="form-group">
+          <label asp-for="User" class="control-label"></label>
+          <select asp-for="User" class="form-control" asp-items="@ViewBag.users"></select>
+          <span asp-validation-for="TotalDayCalories" class="text-danger"></span>
+            </div> 
+          <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
