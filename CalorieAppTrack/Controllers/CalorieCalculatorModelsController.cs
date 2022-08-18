@@ -48,6 +48,14 @@ namespace CalorieAppTrack.Controllers
         // GET: CalorieCalculatorModels/Create
         public IActionResult Create()
         {
+            List<SelectListItem> users = new()
+            {
+                new SelectListItem {Value = "1", Text = "Francisco"},
+                new SelectListItem {Value = "2", Text = "John"},
+                new SelectListItem {Value = "3", Text = "Louis"},
+                new SelectListItem {Value = "4", Text = "Maria"}
+            };
+            ViewBag.users = users;
             return View();
         }
 

@@ -16,6 +16,6 @@ namespace CalorieAppTrack.Models
         public ICollection<RecipesModel> RecipesModels { get; set; }
 
         public IdealWeightCalculatorModel IdealWeightCalculatorModel { get; set; }
-        public CalorieCalculatorModel CalorieCalculatorModel { get; set; }
+        public ICollection<CalorieCalculatorModel> calorieCalculators { get; set; }
     }
 }

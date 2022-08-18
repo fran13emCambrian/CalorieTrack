@@ -24,11 +24,6 @@ namespace CalorieAppTrack.Data
             .WithOne(um => um.UserModel)
             .HasForeignKey<IdealWeightCalculatorModel>(iwc => iwc.UserId);
 
-            modelBuilder.Entity<UserModel>()
-            .HasOne(ccm => ccm.CalorieCalculatorModel)
-            .WithOne(u => u.UserModel)
-            .HasForeignKey<CalorieCalculatorModel>(ccm => ccm.UserId);
-
             base.OnModelCreating(modelBuilder);
 
         }

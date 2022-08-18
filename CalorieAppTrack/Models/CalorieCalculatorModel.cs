@@ -17,7 +17,7 @@ namespace CalorieAppTrack.Models
         public double CalorieIntake {get; set;}
 
         //Relationships
-        public int UserId { get; set; }
-        public UserModel UserModel { get; set; }
+       // public int UserId { get; set; }
+        public UserModel User { get; set; }
     }
 }

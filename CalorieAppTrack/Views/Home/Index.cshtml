@@ -1,34 +1,9 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
-    string[] TableHeaders = new string[]
-    {
-    "User Id",
-    "User Name",
-    "Email",
-    "Phone Number",
-    "First Name",
-    "Last Name"
-    };
 }
 
-<div class="table">
-    <table class="table table-bordered tabble-hover">
-        <thead>
-            <tr> 
-                @{
-                    foreach(var head in TableHeaders)
-                    {
-                        <th>
-                        @head
-                        </th>
-                    }
-                }
-                <th>
+<h2>Check your Ideal Weight</h2>
+<tr>
+    <td><a href="/IdealWeightCalculatorModels/Index"> Link to Calculate Ideal Weight </a></td>
+</tr>
 
-                </th>
-            </tr>
-        </thead>
-       
-    </table>
-
-    </div>
