@@ -142,5 +142,65 @@ namespace TestUnit
             double actualResult = TotalCalories += TotalCalories;
             Assert.AreEqual(desired, actualResult);
         }
+
+        [TestMethod]
+        public void WeightToLooseCalculationsUnitTest1()
+        {
+            double ActualWeight = 500;
+            double IdealWeight = 1;
+            double WeightToLoose = ActualWeight - IdealWeight;
+            double desired = 500;
+
+            double actualResult = ActualWeight - IdealWeight;
+            Assert.AreEqual(desired, actualResult);
+        }
+
+        [TestMethod]
+        public void WeightToLooseCalculationsUnitTest2()
+        {
+            double ActualWeight = 200;
+            double IdealWeight = 100;
+            double WeightToLoose = ActualWeight - IdealWeight;
+            double desired = 100;
+
+            double actualResult = ActualWeight - IdealWeight;
+            Assert.AreEqual(desired, actualResult);
+        }
+
+        [TestMethod]
+        public void WeightToLooseCalculationsUnitTest3()
+        {
+            double ActualWeight = 275;
+            double IdealWeight = 150;
+            double WeightToLoose = ActualWeight - IdealWeight;
+            double desired = 125;
+
+            double actualResult = ActualWeight - IdealWeight;
+            Assert.AreEqual(desired, actualResult);
+        }
+
+        [TestMethod]
+        public void WeightToLooseCalculationsUnitTest4()
+        {
+            double ActualWeight = 260;
+            double IdealWeight = 60;
+            double WeightToLoose = ActualWeight - IdealWeight;
+            double desired = 220;
+
+            double actualResult = ActualWeight - IdealWeight;
+            Assert.AreEqual(desired, actualResult);
+        }
+
+        [TestMethod]
+        public void WeightToLooseCalculationsUnitTest5()
+        {
+            double ActualWeight = 500;
+            double IdealWeight = 0;
+            double WeightToLoose = ActualWeight - IdealWeight;
+            double desired = 500;
+
+            double actualResult = ActualWeight - IdealWeight;
+            Assert.AreEqual(desired, actualResult);
+        }
     }
 }
