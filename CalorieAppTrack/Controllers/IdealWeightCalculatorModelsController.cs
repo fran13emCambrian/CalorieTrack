@@ -57,9 +57,10 @@ namespace CalorieAppTrack.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("WeightId,ActualWeight,Height,IdealWeight,UserId")] IdealWeightCalculatorModel idealWeightCalculatorModel)
+        public async Task<IActionResult> Create([Bind("WeightId,ActualWeight,Height,IdealWeight,WeightToLoose,UserId")] IdealWeightCalculatorModel idealWeightCalculatorModel)
         {
             idealWeightCalculatorModel.IdealWeight = 0.75 * idealWeightCalculatorModel.Height - 62.5;
+            idealWeightCalculatorModel.WeightToLoose = idealWeightCalculatorModel.ActualWeight - idealWeightCalculatorModel.IdealWeight;
             if (ModelState.IsValid)
             {
                 _context.Add(idealWeightCalculatorModel);
@@ -92,7 +93,7 @@ namespace CalorieAppTrack.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("WeightId,ActualWeight,Height,IdealWeight,UserId")] IdealWeightCalculatorModel idealWeightCalculatorModel)
+        public async Task<IActionResult> Edit(int id, [Bind("WeightId,ActualWeight,Height,IdealWeight,WeightToLoose,UserId")] IdealWeightCalculatorModel idealWeightCalculatorModel)
         {
             if (id != idealWeightCalculatorModel.WeightId)
             {

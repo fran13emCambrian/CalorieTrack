@@ -11,6 +11,11 @@ using System.Threading.Tasks;
 using WebDriverManager;
 using WebDriverManager.DriverConfigs.Impl;
 using Xunit;
+using CalorieAppTrack.Controllers;
+using Moq;
+using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Mvc;
+using NUnit.Framework;
 
 namespace IntegrationTest
 {
@@ -78,5 +83,6 @@ namespace IntegrationTest
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual("Login", _driver.Title);
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsTrue(_driver.Title.Contains("Login"));
         }
+
     }
 }

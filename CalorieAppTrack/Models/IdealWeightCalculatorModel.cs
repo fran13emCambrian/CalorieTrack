@@ -14,6 +14,8 @@ namespace CalorieAppTrack.Models
 
         public double IdealWeight { get; set; }
 
+        public double WeightToLoose { get; set; }
+
         //RelationShip
         public int UserId { get; set; }
         public UserModel UserModel { get; set; } 
